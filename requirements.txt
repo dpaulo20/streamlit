@@ -1,3 +1,5 @@
 numpy
 opencv-python-headless
 segmentation_models
+tensorflow==1.14.0
+keras==2.3.0
