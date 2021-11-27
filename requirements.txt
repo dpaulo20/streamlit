@@ -1,1 +1,2 @@
 pandas
+cv2
