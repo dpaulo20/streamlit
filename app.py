@@ -3,7 +3,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import os
-import albumentations as albu
+#import albumentations as albu
 import cv2
 import matplotlib.pyplot as plt
 import segmentation_models as sm
