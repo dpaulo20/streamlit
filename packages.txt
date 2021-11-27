@@ -1,1 +1,1 @@
-pip insall segmentation-models
+pip install segmentation-models
