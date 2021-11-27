@@ -1,2 +1,3 @@
 pandas
 opencv-python
+segmentation_models
