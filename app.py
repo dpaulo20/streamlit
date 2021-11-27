@@ -30,4 +30,10 @@ model = sm.Unet(BACKBONE,
                 activation='sigmoid',
                 encoder_freeze=False)
 
-#model.load_weights('./model.h5')
+model_path = st.file_uploader("Choose a h5 file", type="h5")
+model.load_weights(model_path)
+
+#url = 'https://github.com/jithincheriyan/Web_App/blob/mast
+#/Transformer_BERT_Model.h5'
+#filename = url.split('/')[-1]
+#trained_model.load_weights(urllib.request.urlretrieve(url, filename))
