@@ -1,2 +1,1 @@
-
-segmentation-models
+pip insall segmentation-models
