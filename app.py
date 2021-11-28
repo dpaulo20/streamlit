@@ -48,7 +48,7 @@ if image_path is not None:
      data = np.ndarray(shape=(1, WIDTH, HEIGHT, 3), dtype=np.float32)
      image = img
      #image sizing
-     size = (WIDTH, HEIGHT)
+     size = (HEIGHT,WIDTH)
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
      image_array = np.asarray(image)
      data[0] = image_array
