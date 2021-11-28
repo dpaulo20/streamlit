@@ -60,7 +60,7 @@ model = sm.FPN(BACKBONE,
     
 url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
 filename ='model.h5'
-model.load_weights(urllib.request.urlretrieve(url, filename))
+model.load_weights(urllib3.request.urlretrieve(url, filename))
 #model.load_weights(model_path)
     
 
@@ -81,7 +81,4 @@ if image_path is not None:
 
 
 
-url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
-#/Transformer_BERT_Model.h5'
-filename ='model.h5'
-trained_model.load_weights(urllib3.request.urlretrieve(url, filename))
+
