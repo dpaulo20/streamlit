@@ -44,7 +44,7 @@ image_path = st.file_uploader("Choose a image", type="jpeg")
 
 if image_path is not None:
     
-     img= img.reshape((WIDTH,HEIGHT,1)) 
+     img= image_path.reshape((WIDTH,HEIGHT,1)) 
      st.text(img.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
