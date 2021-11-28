@@ -37,10 +37,7 @@ model_path = st.file_uploader("Choose a h5 file", type="h5")
 
 if model_path is not None:
     
-    classifier=load_model(model_path)
-    classifier.summary()
-
-#        model.load_weights(model_path)
+    model.load_weights(model_path)
 
 #url = 'https://github.com/jithincheriyan/Web_App/blob/mast
 #/Transformer_BERT_Model.h5'
