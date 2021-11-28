@@ -23,10 +23,9 @@ def visualize_image_mask_prediction(image):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
     fontsize = 14
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
-    f, ax = plt.subplots(2, 5, figsize=(24,8))
     
-    ax[1, 0].imshow(image)
-    ax[1, 0].set_title('Original image', fontsize=fontsize)
+    st.image(image, caption='Uploaded MRI.', use_column_width=True)
+    #ax[1, 0].set_title('Original image', fontsize=fontsize)
 
 #    for i in range(4):
 #        ax[1, i + 1].imshow(mask_prediction[:, :, i],vmin = 0, vmax = 1)
