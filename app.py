@@ -21,9 +21,9 @@ st.header("Brain Tumor MRI Classification Example")
 
 st.text("Upload a brain MRI Image for image classification as tumor or no-tumor")
 
-BACKBONE = 'resnet50'
+BACKBONE = 'vgg16'
 
-model = sm.Unet(BACKBONE, 
+model = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
