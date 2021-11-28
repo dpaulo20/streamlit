@@ -72,7 +72,7 @@ if image_path is not None:
      image_array = np.asarray(image)
      data[0] = image_array
      st.text(data.shape) 
-     #batch_pred_masks = model.predict(data, workers=1,verbose=1)
+     batch_pred_masks = model.predict(data, workers=1,verbose=1)
      visualize_image_mask_prediction(image)
 
 
