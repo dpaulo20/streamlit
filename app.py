@@ -24,23 +24,24 @@ def visualize_image_mask_prediction(image):
     fontsize = 14
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
-    st.image(image, caption='Uploaded MRI.', use_column_width=True)
+    st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     #ax[1, 0].set_title('Original image', fontsize=fontsize)
 
-#    for i in range(4):
-#        ax[1, i + 1].imshow(mask_prediction[:, :, i],vmin = 0, vmax = 1)
-#        ax[1, i + 1].set_title(f'Prediction {class_dict[i]}', fontsize=fontsize)
+    for i in range(4):
+        caption='Prediction {class_dict[i]}'
+         st.image(mask_prediction[:, :, i],caption=captation, use_column_width=True)
+                  #        ax[1, i + 1].set_title(f'Prediction {class_dict[i]}', fontsize=fontsize)
 
 ############################
 
 
 
 
-st.title("Image Classification with Google's Teachable Machine")
+st.title("Cloud classification project")
 
-st.header("Brain Tumor MRI Classification Example")
+st.header("cloud classification  Example")
 
-st.text("Upload a brain MRI Image for image classification as tumor or no-tumor")
+st.text("Upload a image of cloud)
 
 BACKBONE = 'inceptionv3'
 
