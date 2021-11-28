@@ -51,13 +51,16 @@ model = sm.FPN(BACKBONE,
                 activation='sigmoid',
                 encoder_freeze=False)
 
-model_path = st.file_uploader("Choose a h5 file", type="h5")
+#model_path = st.file_uploader("Choose a h5 file", type="h5")
 
 
 
-if model_path is not None:
+#if model_path is not None:
     
-    model.load_weights(model_path)
+url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
+filename ='model.h5'
+model.load_weights(urllib.request.urlretrieve(url, filename))
+#model.load_weights(model_path)
     
 
 image_path = st.file_uploader("Choose a image", type="jpg")
@@ -77,7 +80,7 @@ if image_path is not None:
 
 
 
-#url = 'https://github.com/jithincheriyan/Web_App/blob/mast
+url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
 #/Transformer_BERT_Model.h5'
-#filename = url.split('/')[-1]
-#trained_model.load_weights(urllib.request.urlretrieve(url, filename))
+filename ='model.h5'
+trained_model.load_weights(urllib.request.urlretrieve(url, filename))
