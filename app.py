@@ -32,9 +32,15 @@ model = sm.FPN(BACKBONE,
 
 model_path = st.file_uploader("Choose a h5 file", type="h5")
 
-if model_path is not None:
+from keras.models import load_model
 
-        model.load_weights(model_path)
+classifier=load_model(model_path)
+
+classifier.summary()
+
+#if model_path is not None:
+
+#        model.load_weights(model_path)
 
 #url = 'https://github.com/jithincheriyan/Web_App/blob/mast
 #/Transformer_BERT_Model.h5'
