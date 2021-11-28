@@ -8,6 +8,7 @@ import cv2
 import matplotlib.pyplot as plt
 import segmentation_models as sm
 from clouds_utilities_functions import np_resize, build_masks
+from keras.models import load_model
 
 HEIGHT = 320
 WIDTH = 480
@@ -32,13 +33,12 @@ model = sm.FPN(BACKBONE,
 
 model_path = st.file_uploader("Choose a h5 file", type="h5")
 
-from keras.models import load_model
 
-classifier=load_model(model_path)
 
-classifier.summary()
-
-#if model_path is not None:
+if model_path is not None:
+    
+    classifier=load_model(model_path)
+    classifier.summary()
 
 #        model.load_weights(model_path)
 
