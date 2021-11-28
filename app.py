@@ -45,8 +45,12 @@ image_path = st.file_uploader("Choose a image", type="jpeg")
 
 if image_path is not None:
      img = Image.open(image_path)
-     img= img.reshape((WIDTH,HEIGHT,1)) 
-     st.text(img.shape)  
+     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+     image = img
+     #image sizing
+     size = (224, 224)
+     image = ImageOps.fit(image, size, Image.ANTIALIAS)
+     st.text(image.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
          #                                   workers=1,
