@@ -10,6 +10,7 @@ import segmentation_models as sm
 from clouds_utilities_functions import np_resize, build_masks
 from keras.models import load_model
 from PIL import Image, ImageOps
+import urllib
 
 HEIGHT = 320
 WIDTH = 480
