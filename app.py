@@ -43,8 +43,8 @@ if model_path is not None:
 image_path = st.file_uploader("Choose a image", type="jpeg")
 
 if image_path is not None:
-    
-     img= image_path.reshape((WIDTH,HEIGHT,1)) 
+     img = cv2.imread(image_path)
+     img= img.reshape((WIDTH,HEIGHT,1)) 
      st.text(img.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
