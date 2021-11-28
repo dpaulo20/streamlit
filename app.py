@@ -10,7 +10,7 @@ import segmentation_models as sm
 from clouds_utilities_functions import np_resize, build_masks
 from keras.models import load_model
 from PIL import Image, ImageOps
-import urllib
+import urllib3
 
 HEIGHT = 320
 WIDTH = 480
@@ -84,4 +84,4 @@ if image_path is not None:
 url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
 #/Transformer_BERT_Model.h5'
 filename ='model.h5'
-trained_model.load_weights(urllib.request.urlretrieve(url, filename))
+trained_model.load_weights(urllib3.request.urlretrieve(url, filename))

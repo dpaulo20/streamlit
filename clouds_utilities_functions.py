@@ -10,7 +10,6 @@ from imgaug.augmentables.segmaps import SegmentationMapOnImage
 from imgaug.imgaug import draw_text
 from tensorflow.keras import backend as K
 from tensorflow.keras.losses import binary_crossentropy
-import urllib
 
 
 def np_resize(img, input_shape):
