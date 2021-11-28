@@ -29,7 +29,7 @@ def visualize_image_mask_prediction(image):
 
     for i in range(4):
         caption='Prediction {class_dict[i]}'
-         st.image(mask_prediction[:, :, i],caption=captation, use_column_width=True)
+        st.image(mask_prediction[:, :, i],caption=captation, use_column_width=True)
                   #        ax[1, i + 1].set_title(f'Prediction {class_dict[i]}', fontsize=fontsize)
 
 ############################
