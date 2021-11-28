@@ -41,17 +41,18 @@ if model_path is not None:
     model.load_weights(model_path)
     
 
-image_path = st.file_uploader("Choose a image", type="jpeg")
+image_path = st.file_uploader("Choose a image", type="jpg")
 
 if image_path is not None:
      img = Image.open(image_path)
-     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+     data = np.ndarray(shape=(1, WIDTH, HEIGHT, 3), dtype=np.float32)
      image = img
      #image sizing
-     size = (224, 224)
+     size = (WIDTH, HEIGHT)
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
      image_array = np.asarray(image)
-     st.text(image_array.shape)  
+     data[0] = image_array
+     st.text(data.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
          #                                   workers=1,
