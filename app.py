@@ -48,8 +48,8 @@ if image_path is not None:
      st.text(img.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
-                                            workers=1,
-                                            verbose=1)
+         #                                   workers=1,
+          #                                  verbose=1)
 
 
 
