@@ -30,7 +30,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     for i in range(4):
         title={class_dict[i]}
         st.text(mask_prediction.shape)
-        st.image(mask_prediction[:, :, i],caption='title', use_column_width=True)
+        st.image(mask_prediction[0,:, :, i],caption='title', use_column_width=True)
 
 
 ############################
