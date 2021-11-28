@@ -26,11 +26,10 @@ def visualize_image_mask_prediction(image,mask_prediction):
     
     st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     #ax[1, 0].set_title('Original image', fontsize=fontsize)
-
+    cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
-        st.text(mask_prediction.shape)
-        st.image(mask_prediction[0,:, :, i],caption=title,width=100,channels='RGB')
+        cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100,channels='RGB')
 
 
 ############################
