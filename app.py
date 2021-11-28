@@ -28,6 +28,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     mask_prediction = cv2.cvtColor(mask_prediction, cv2.COLOR_GRAY2BGR)
     cols = st.beta_columns(4) 
     for i in range(4):
+        mask_prediction[0,:, :,i] = cv2.cvtColor(mask_prediction[0,:, :,i], cv2.COLOR_GRAY2BGR)
         title='class  '+class_dict[i]
         cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100,channels='RGB')
 
