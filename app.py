@@ -64,10 +64,10 @@ image_path = st.file_uploader("Choose a image", type="jpg")
 
 if image_path is not None:
      img = Image.open(image_path)
-     data = np.ndarray(shape=(1, WIDTH, HEIGHT, 3), dtype=np.float32)
+     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
      image = img
      #image sizing
-     size = (HEIGHT,WIDTH)
+     size = (WIDTH,HEIGHT)
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
      image_array = np.asarray(image)
      data[0] = image_array
