@@ -43,7 +43,7 @@ if model_path is not None:
 image_path = st.file_uploader("Choose a image", type="jpeg")
 
 if image_path is not None:
-     img = cv2.imread(image_path)
+     img = Image.open(image_path)
      img= img.reshape((WIDTH,HEIGHT,1)) 
      st.text(img.shape)  
         
