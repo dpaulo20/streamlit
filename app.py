@@ -22,7 +22,7 @@ st.header("Brain Tumor MRI Classification Example")
 
 st.text("Upload a brain MRI Image for image classification as tumor or no-tumor")
 
-BACKBONE = 'vgg16'
+BACKBONE = 'inceptionV3'
 
 model = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
