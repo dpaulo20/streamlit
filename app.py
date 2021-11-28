@@ -50,7 +50,8 @@ if image_path is not None:
      #image sizing
      size = (224, 224)
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
-     st.text(image.shape)  
+     image_array = np.asarray(image)
+     st.text(image_array.shape)  
         
      #batch_pred_masks = model.predict_generator(check_generator, 
          #                                   workers=1,
