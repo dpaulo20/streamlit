@@ -19,7 +19,7 @@ NB_CLASSES = 4
 
 ##fonction
 
-def visualize_image_mask_prediction(image):
+def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
     fontsize = 14
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
@@ -74,7 +74,7 @@ if image_path is not None:
      data[0] = image_array
      st.text(data.shape) 
      batch_pred_masks = model.predict(data)
-     visualize_image_mask_prediction(image)
+     visualize_image_mask_prediction(image,mask_prediction)
 
 
 
