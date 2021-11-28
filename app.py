@@ -17,6 +17,26 @@ WIDTH = 480
 CHANNELS = 3 
 NB_CLASSES = 4
 
+##fonction
+
+def visualize_image_mask_prediction(image):
+    """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
+    fontsize = 14
+    class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
+    f, ax = plt.subplots(2, 5, figsize=(24,8))
+    
+    ax[1, 0].imshow(image)
+    ax[1, 0].set_title('Original image', fontsize=fontsize)
+
+#    for i in range(4):
+#        ax[1, i + 1].imshow(mask_prediction[:, :, i],vmin = 0, vmax = 1)
+#        ax[1, i + 1].set_title(f'Prediction {class_dict[i]}', fontsize=fontsize)
+
+############################
+
+
+
+
 st.title("Image Classification with Google's Teachable Machine")
 
 st.header("Brain Tumor MRI Classification Example")
@@ -52,11 +72,11 @@ if image_path is not None:
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
      image_array = np.asarray(image)
      data[0] = image_array
-     st.text(data.shape)  
-        
-     #batch_pred_masks = model.predict_generator(check_generator, 
-         #                                   workers=1,
-          #                                  verbose=1)
+     st.text(data.shape) 
+     batch_pred_masks = model.predict_generator(data, 
+                                           workers=1,
+                                            verbose=1)
+     visualize_image_mask_prediction(image)
 
 
 
