@@ -7,3 +7,4 @@ h5py==2.9.0
 imgaug
 Pillow
 urllib3
+wget

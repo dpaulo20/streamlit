@@ -11,6 +11,7 @@ from clouds_utilities_functions import np_resize, build_masks
 from keras.models import load_model
 from PIL import Image, ImageOps
 import urllib3
+import wget
 
 HEIGHT = 320
 WIDTH = 480
@@ -59,8 +60,8 @@ model = sm.FPN(BACKBONE,
 #if model_path is not None:
     
 url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
-filename ='model.h5'
-model.load_weights(urllib3.request.urlretrieve(url, filename))
+wget.download(url, 'model.h5')
+model.load_weights('model.h5')
 #model.load_weights(model_path)
     
 
