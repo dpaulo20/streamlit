@@ -2,6 +2,6 @@ numpy
 opencv-python-headless
 segmentation_models
 tensorflow==1.14.0
-keras==2.3.0
+keras==2.2.4
 h5py==2.9.0
 imgaug
