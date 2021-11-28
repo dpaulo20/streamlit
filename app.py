@@ -38,6 +38,20 @@ model_path = st.file_uploader("Choose a h5 file", type="h5")
 if model_path is not None:
     
     model.load_weights(model_path)
+    
+
+image_path = st.file_uploader("Choose a image", type="jpeg")
+
+if image_path is not None:
+    
+     img= img.reshape((WIDTH,HEIGHT,1)) 
+     st.text(img.shape)  
+        
+     #batch_pred_masks = model.predict_generator(check_generator, 
+                                            workers=1,
+                                            verbose=1)
+
+
 
 #url = 'https://github.com/jithincheriyan/Web_App/blob/mast
 #/Transformer_BERT_Model.h5'
