@@ -25,7 +25,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
     st.image(image, caption='Uploaded cloud image.', use_column_width=True)
-    #ax[1, 0].set_title('Original image', fontsize=fontsize)
+    mask_prediction = cv2.cvtColor(mask_prediction, cv2.COLOR_GRAY2BGR)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
