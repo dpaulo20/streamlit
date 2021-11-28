@@ -28,9 +28,9 @@ def visualize_image_mask_prediction(image,mask_prediction):
     #ax[1, 0].set_title('Original image', fontsize=fontsize)
 
     for i in range(4):
-        title={class_dict[i]}
+        title='class'+class_dict[i]
         st.text(mask_prediction.shape)
-        st.image(mask_prediction[0,:, :, i],caption='title', use_column_width=True)
+        st.image(mask_prediction[0,:, :, i],caption=title, use_column_width=True)
 
 
 ############################
