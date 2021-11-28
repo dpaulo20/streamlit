@@ -5,4 +5,4 @@ tensorflow==1.14.0
 keras==2.2.4
 h5py==2.9.0
 imgaug
-PIL
+Pillow
