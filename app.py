@@ -41,7 +41,7 @@ st.title("Cloud classification project")
 
 st.header("cloud classification  Example")
 
-st.text("Upload a image of cloud)
+st.text("Upload a image of cloud")
 
 BACKBONE = 'inceptionv3'
 
