@@ -20,7 +20,7 @@ WIDTH = 480
 CHANNELS = 3 
 NB_CLASSES = 4
 
-######fonction
+######f######onction
 
 def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
