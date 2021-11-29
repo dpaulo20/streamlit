@@ -58,26 +58,26 @@ model = sm.FPN(BACKBONE,
 #filename = wget.download(url)
 #st.text(filename)
 
-uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
-if uploaded_file is not None:
-    model.load_weights(uploaded_file)
+#uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
+#if uploaded_file is not None:
+#    model.load_weights(uploaded_file)
 
     
 
-image_path = st.file_uploader("Choose a image", type="jpg")
+#image_path = st.file_uploader("Choose a image", type="jpg")
 
-if image_path is not None:
-     img = Image.open(image_path)
-     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
-     image = img
+#if image_path is not None:
+#     img = Image.open(image_path)
+#     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
+#     image = img
      #image sizing
-     size = (WIDTH,HEIGHT)
+#     size = (WIDTH,HEIGHT)
      image = ImageOps.fit(image, size, Image.ANTIALIAS)
-     image_array = np.asarray(image)
-     data[0] = image_array
-     st.text(data.shape) 
-     batch_pred_masks = model.predict(data)
-     visualize_image_mask_prediction(image,batch_pred_masks)
+#     image_array = np.asarray(image)
+#     data[0] = image_array
+#     st.text(data.shape) 
+#     batch_pred_masks = model.predict(data)
+#     visualize_image_mask_prediction(image,batch_pred_masks)
 
 
 
