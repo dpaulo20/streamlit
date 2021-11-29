@@ -72,7 +72,7 @@ model = sm.FPN(BACKBONE,
 #     image = img
      #image sizing
 #     size = (WIDTH,HEIGHT)
-     image = ImageOps.fit(image, size, Image.ANTIALIAS)
+#     image = ImageOps.fit(image, size, Image.ANTIALIAS)
 #     image_array = np.asarray(image)
 #     data[0] = image_array
 #     st.text(data.shape) 
