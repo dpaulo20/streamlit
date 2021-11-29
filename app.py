@@ -20,7 +20,7 @@ WIDTH = 480
 CHANNELS = 3 
 NB_CLASSES = 4
 
-##fonction
+######fonction
 
 def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
@@ -53,17 +53,12 @@ model = sm.FPN(BACKBONE,
                 encoder_weights='imagenet',
                 activation='sigmoid',
                 encoder_freeze=False)
-
-#model_path = st.file_uploader("Choose a h5 file", type="h5")
-
-
-
-#if model_path is not None:
     
 url = 'https://drive.google.com/uc?export=download&id=18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
 filename = wget.download(url)
-model.load_weights(filename)
-#model.load_weights(model_path)
+if filename not None:
+    model.load_weights(filename)
+
     
 
 image_path = st.file_uploader("Choose a image", type="jpg")
