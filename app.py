@@ -47,17 +47,18 @@ st.text("Upload a image of cloud")
 
 BACKBONE = 'inceptionv3'
 
-model = sm.FPN(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
     
 url = 'https://drive.google.com/uc?export=download&id=18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
 filename = wget.download(url)
 st.text(filename)
 if filename is not None:
+    
+    model = sm.FPN(BACKBONE, 
+                classes=NB_CLASSES,
+                input_shape=(HEIGHT, WIDTH, CHANNELS),
+                encoder_weights='imagenet',
+                activation='sigmoid',
+                encoder_freeze=False)
     model.load_weights(filename)
 
     
