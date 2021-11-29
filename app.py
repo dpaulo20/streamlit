@@ -58,9 +58,9 @@ model = sm.FPN(BACKBONE,
 #filename = wget.download(url)
 #st.text(filename)
 
-#uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
-#if uploaded_file is not None:
-#    model.load_weights(uploaded_file)
+uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
+if uploaded_file is not None:
+    model.load_weights(uploaded_file)
 
     
 
