@@ -60,10 +60,9 @@ model = sm.FPN(BACKBONE,
 
 #if model_path is not None:
     
-url = 'https://drive.google.com/file/d/18v5OxWsw-TqlsfTnURev2E_qECib2xnQ/view?usp=sharing'
-output = 'FPN_inceptionv3.h5'
-gdown.download(url, output, quiet=False)
-model.load_weights('FPN_inceptionv3.h5')
+url = 'https://drive.google.com/uc?export=download&id=18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
+filename = wget.download(url)
+model.load_weights(filename)
 #model.load_weights(model_path)
     
 
