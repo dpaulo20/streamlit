@@ -137,6 +137,7 @@ if image_path is not None:
      data[0] = image_array
      st.text(data.shape) 
      batch_pred_masks_FPN = model_FPN.predict(data)
+     batch_pred_masks_UNET = model_UNET.predict(data)
      st.text("Prediction FPN - resnet50")
      visualize_image_mask_prediction(image,batch_pred_masks_FPN)
      st.text("Prediction UNET - resnet50")
