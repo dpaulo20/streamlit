@@ -58,13 +58,15 @@ model = sm.FPN(BACKBONE,
 #Downloading h5
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 
-save_dest = Path('model')
-save_dest.mkdir(exist_ok=True)    
-f_checkpoint = Path("model/FPNresnet50.h5")
+path2 = './FPNresnet50.pt'
 
-if not f_checkpoint.exists():
-    with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            download_file_from_google_drive(url, f_checkpoint)
+if not os.path.exists(path2):
+        encoder_url = 'wget -O ./FPNresnet50.pt https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s
+    with st.spinner('Downloading model weights for resnet50'):
+            os.system(encoder_url)
+else:
+
+    print("Model 2 is here.")
 
 model.load_weights(f_checkpoint)
 ####
