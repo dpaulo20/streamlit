@@ -43,7 +43,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
 
 st.title("Cloud classification project")
 
-st.header("cloud Segmentation Example with FPN-InceptionV3 model ")
+st.header("cloud Segmentation Example with FPN-RESNET50 model ")
 
 st.text("Upload a image of cloud")
 
