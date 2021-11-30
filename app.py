@@ -64,7 +64,7 @@ if not os.path.exists(path2):
         encoder_url = 'wget -O FPNresnet50.h5 https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
         with st.spinner('Downloading model weights for resnet50'):
             os.system(encoder_url)
-        model.load_weights(path2)
+            model.load_weights(path2)
 else:
 
     print("Model 2 is here.")
