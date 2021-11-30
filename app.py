@@ -91,7 +91,7 @@ def save_response_content(response, destination):
                 
 ####`
 
-file_id = '18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
+file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 destination = 'FTP.h5'
 download_file_from_google_drive(file_id, destination)
 model.load_weights('FTP.h5')
