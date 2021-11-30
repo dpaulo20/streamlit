@@ -95,7 +95,7 @@ model_FPN.load_weights('FPN-resnet50.h5')
 
 BACKBONE = 'resnet50'
 
-model_UNET = sm.UNET(BACKBONE, 
+model_UNET = sm.Unet(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
