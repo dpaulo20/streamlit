@@ -68,7 +68,7 @@ else:
 
     print("Model 2 is here.")
 
-model.load_weights(f_checkpoint)
+model.load_weights(path2)
 ####
 
 uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
