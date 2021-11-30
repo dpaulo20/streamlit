@@ -13,6 +13,7 @@ from PIL import Image, ImageOps
 import urllib3
 import wget
 import gdown
+from GD_download import download_file_from_google_drive
 
 HEIGHT = 320
 WIDTH = 480
@@ -53,12 +54,20 @@ model = sm.FPN(BACKBONE,
                 encoder_weights='imagenet',
                 activation='sigmoid',
                 encoder_freeze=False)
-    
+
+#Downloading h5
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-filename = wget.download(url)
-st.text(filename)
-if filename is not None:
-   model.load_weights(filename)
+
+save_dest = Path('model')
+save_dest.mkdir(exist_ok=True)    
+f_checkpoint = Path("model/FPNresnet50.h5")
+
+if not f_checkpoint.exists():
+    with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
+            download_file_from_google_drive(url, f_checkpoint)
+
+model.load_weights(f_checkpoint)
+####
 
 uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
 if uploaded_file is not None:
