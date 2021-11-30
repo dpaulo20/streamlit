@@ -56,7 +56,7 @@ model = sm.FPN(BACKBONE,
     
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 filename = wget.download(url)
-if ufilename is not None:
+if filename is not None:
    model.load_weights(filename)
 
 uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
