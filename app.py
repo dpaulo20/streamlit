@@ -31,7 +31,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
-        cols[i].image(mask_prediction[:, :,i],caption=title,width=100)
+        cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
 
 
 ############################
@@ -77,8 +77,7 @@ if image_path is not None:
      image_array = np.asarray(image)
      data[0] = image_array
      st.text(data.shape) 
-     batch_pred_masks = model.predict_generator(data,workers=1,verbose=1)
-     st.text(batch_pred_masks.shape)
+     batch_pred_masks = model.predict(data)
      visualize_image_mask_prediction(image,batch_pred_masks)
 
 
