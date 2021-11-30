@@ -23,12 +23,11 @@ NB_CLASSES = 4
 
 ######fonction de visualisation#########
 
-def visualize_image_mask_prediction(image,mask_prediction):
+def visualize_image_mask_prediction(mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
 
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
-    st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
@@ -138,10 +137,11 @@ if image_path is not None:
      st.text(data.shape) 
      batch_pred_masks_FPN = model_FPN.predict(data)
      batch_pred_masks_UNET = model_UNET.predict(data)
+     st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      st.text("Prediction FPN - resnet50")
-     visualize_image_mask_prediction(image,batch_pred_masks_FPN)
+     visualize_image_mask_prediction(batch_pred_masks_FPN)
      st.text("Prediction UNET - resnet50")
-     visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+     visualize_image_mask_prediction(batch_pred_masks_UNET)
 
 
 
