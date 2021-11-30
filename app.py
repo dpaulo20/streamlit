@@ -60,9 +60,10 @@ url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 
 path2 = './FPNresnet50.h5'
 
+
 if not os.path.exists(path2):
         encoder_url = 'wget -O ./FPNresnet50.h5 https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-        decoder_url = 'wget -O ./Flickr30k_Decoder_10.pth.tar https://www.dropbox.com/s/cf2ox65vi7c2fou/Flickr30k_Decoder_10.pth.tar?dl=0'
+        decoder_url = 'wget https://drive.google.com/u/0/uc?export=download&confirm=hpl1&id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
         with st.spinner('Downloading model weights for resnet50'):
             os.system(encoder_url)
             
