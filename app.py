@@ -126,22 +126,23 @@ st.text("Upload a image of cloud")
 
 image_path = st.file_uploader("Choose a image", type="jpg")
 
-if image_path is not None:
-     img = Image.open(image_path)
-     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
-     image = img
-     #image sizing
-     size = (WIDTH,HEIGHT)
-     image = ImageOps.fit(image, size)
-     image_array = np.asarray(image)/ 255.
-     data[0] = image_array
-     st.text(data.shape) 
-     batch_pred_masks_FPN = model_FPN.predict(data)
-     batch_pred_masks_UNET = model_UNET.predict(data)
-     st.text("Prediction FPN - resnet50")
-     visualize_image_mask_prediction(image,batch_pred_masks_FPN)
-     st.text("Prediction UNET - resnet50")
-     visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+with st.spinner('Wait for it...'):
+    if image_path is not None:
+         img = Image.open(image_path)
+         data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
+         image = img
+         #image sizing
+         size = (WIDTH,HEIGHT)
+         image = ImageOps.fit(image, size)
+         image_array = np.asarray(image)/ 255.
+         data[0] = image_array
+         st.text(data.shape) 
+         batch_pred_masks_FPN = model_FPN.predict(data)
+         batch_pred_masks_UNET = model_UNET.predict(data)
+         st.text("Prediction FPN - resnet50")
+         visualize_image_mask_prediction(image,batch_pred_masks_FPN)
+         st.text("Prediction UNET - resnet50")
+         visualize_image_mask_prediction(image,batch_pred_masks_UNET)
 
 
 
