@@ -77,7 +77,7 @@ if image_path is not None:
      #image sizing
      size = (WIDTH,HEIGHT)
      image = ImageOps.fit(image, size)
-     image_array = np.asarray(image)
+     image_array = np.asarray(image)/ 255.
      data[0] = image_array
      st.text(data.shape) 
      batch_pred_masks = model.predict(data)
