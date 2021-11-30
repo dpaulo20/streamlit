@@ -10,3 +10,4 @@ Pillow
 urllib3
 wget
 gdown
+requests
