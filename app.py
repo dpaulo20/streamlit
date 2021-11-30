@@ -58,18 +58,9 @@ model = sm.FPN(BACKBONE,
 #Downloading h5
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 
-path2 = './FPNresnet50.h5'
+file_name = wget.download(site_url)
+print(file_name)
 
-
-if not os.path.exists(path2):
-        encoder_url = 'wget -O ./FPNresnet50.h5 https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-        decoder_url = 'wget https://drive.google.com/u/0/uc?export=download&confirm=hpl1&id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-        with st.spinner('Downloading model weights for resnet50'):
-            os.system(encoder_url)
-            
-else:
-
-    print("Model 2 is here.")
 
 #model.load_weights(path2)
 
