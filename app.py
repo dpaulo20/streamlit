@@ -61,8 +61,7 @@ model = sm.FPN(BACKBONE,
 uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
 if uploaded_file is not None:
    model.load_weights(uploaded_file)
-else
-
+else:
 st.text("Non)
     
 
