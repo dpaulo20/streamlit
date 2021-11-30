@@ -56,6 +56,7 @@ model = sm.FPN(BACKBONE,
     
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 filename = wget.download(url)
+st.text(filename)
 if filename is not None:
    model.load_weights(filename)
 
