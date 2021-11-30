@@ -24,15 +24,18 @@ NB_CLASSES = 4
 
 def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
-    fontsize = 14
+
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
     st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
-        cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
+        cols[i].image(mask_prediction[0,:, :,0],caption=title,width=100)
 
+        cols[i].image(mask_prediction[0,:, :,1],caption=title,width=100)
+        cols[i].image(mask_prediction[0,:, :,2],caption=title,width=100)
+        cols[i].image(mask_prediction[0,:, :,3],caption=title,width=100)
 
 ############################
 
