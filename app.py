@@ -74,7 +74,6 @@ if image_path is not None:
      #image sizing
      size = (WIDTH,HEIGHT)
      image = ImageOps.fit(image, size)
-     st.text(image.shape)
      image_array = np.asarray(image)
      data[0] = image_array
      st.text(data.shape) 
