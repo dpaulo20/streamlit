@@ -45,7 +45,7 @@ st.header("cloud Segmentation Example with FPN-InceptionV3 model ")
 
 st.text("Upload a image of cloud")
 
-BACKBONE = 'inceptionv3'
+BACKBONE = 'vgg16'
 
 model = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
