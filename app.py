@@ -31,7 +31,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
-        cols[i].image(mask_prediction[0,:, :],caption=title,width=100,channels='RGB')
+        cols[i].image(mask_prediction[0],caption=title,width=100,channels='RGB')
 
 
 ############################
