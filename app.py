@@ -78,6 +78,7 @@ if image_path is not None:
      data[0] = image_array
      st.text(data.shape) 
      batch_pred_masks = model.predict(data)
+     st.text(batch_pred_masks.shape)
      visualize_image_mask_prediction(image,batch_pred_masks)
 
 
