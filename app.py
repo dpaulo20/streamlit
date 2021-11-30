@@ -18,11 +18,10 @@ import requests
 
 HEIGHT = 320
 WIDTH = 480
-
 CHANNELS = 3 
 NB_CLASSES = 4
 
-######fonction
+######fonction de visualisation#########
 
 def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
@@ -36,27 +35,9 @@ def visualize_image_mask_prediction(image,mask_prediction):
         cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
 
 
-############################
+###########################################
 
-
-
-
-st.title("Cloud classification project")
-
-st.header("cloud Segmentation Example with FPN-RESNET50 model ")
-
-st.text("Upload a image of cloud")
-
-BACKBONE = 'resnet50'
-
-model = sm.FPN(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
-
-#Downloading h5
+######### Fonctions Downloading fichier h5 ######
 
 def download_file_from_google_drive(id, destination):
     URL = "https://drive.google.com/uc?export=download"
@@ -88,19 +69,37 @@ def save_response_content(response, destination):
                 f.write(chunk)
 
                 
-####`
+###########################################`
 
-file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-destination = 'FTP.h5'
+### création du modéle FPN-resnet50 +Download des poids
+
+BACKBONE = 'resnet50'
+
+model = sm.FPN(BACKBONE, 
+                classes=NB_CLASSES,
+                input_shape=(HEIGHT, WIDTH, CHANNELS),
+                encoder_weights='imagenet',
+                activation='sigmoid',
+                encoder_freeze=False)
+
+
+
+file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
+destination = 'FPN-resnet50.h5'
 download_file_from_google_drive(file_id, destination)
-model.load_weights('FTP.h5')
+model.load_weights('FPN-resnet50.h5')
 
-#uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
-#if uploaded_file is not None:
-#   model.load_weights(uploaded_file)
-#else:
-#   st.text("Non")
-    
+###########################################
+
+#########Streamlit section###############
+
+st.title("Cloud classification project")
+
+st.header("cloud Segmentation Example with FPN-RESNET50 model ")
+
+st.text("Upload a image of cloud")
+
+### Downloading du image, détection et affichage des prédictions
 
 image_path = st.file_uploader("Choose a image", type="jpg")
 
