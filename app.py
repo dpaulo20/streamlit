@@ -58,7 +58,7 @@ model = sm.FPN(BACKBONE,
 #Downloading h5
 url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
 
-file_name = wget.download(site_url)
+file_name = wget.download(url)
 print(file_name)
 
 
