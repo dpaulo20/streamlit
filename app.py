@@ -56,7 +56,7 @@ model = sm.FPN(BACKBONE,
                 encoder_freeze=False)
 
 #Downloading h5
-url = 'https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
+url = 'https://drive.google.com/uc?export=download&id=18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
 
 file_name = wget.download(url)
 print(file_name)
