@@ -62,7 +62,7 @@ path2 = './FPNresnet50.pt'
 
 if not os.path.exists(path2):
         encoder_url = 'wget -O ./FPNresnet50.pt https://drive.google.com/u/0/open?id=17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s'
-    with st.spinner('Downloading model weights for resnet50'):
+        with st.spinner('Downloading model weights for resnet50'):
             os.system(encoder_url)
 else:
 
