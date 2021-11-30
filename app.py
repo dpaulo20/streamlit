@@ -13,7 +13,7 @@ from PIL import Image, ImageOps
 import urllib3
 import wget
 import gdown
-from GD_download import download_file_from_google_drive
+
 
 HEIGHT = 320
 WIDTH = 480
