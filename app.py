@@ -75,7 +75,7 @@ def save_response_content(response, destination):
 
 BACKBONE = 'resnet50'
 
-model = sm.FPN(BACKBONE, 
+model_FPN = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
@@ -87,15 +87,38 @@ model = sm.FPN(BACKBONE,
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
 destination = 'FPN-resnet50.h5'
 download_file_from_google_drive(file_id, destination)
-model.load_weights('FPN-resnet50.h5')
+model_FPN.load_weights('FPN-resnet50.h5')
 
 ###########################################
+
+### création du modéle UNET-resnet50 +Download des poids
+
+BACKBONE = 'resnet50'
+
+model_UNET = sm.UNET(BACKBONE, 
+                classes=NB_CLASSES,
+                input_shape=(HEIGHT, WIDTH, CHANNELS),
+                encoder_weights='imagenet',
+                activation='sigmoid',
+                encoder_freeze=False)
+
+
+
+file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive google
+destination = 'UNET-resnet50.h5'
+download_file_from_google_drive(file_id, destination)
+model_UNET.load_weights('UNET-resnet50.h5')
+
+###########################################
+
+
+
 
 #########Streamlit section###############
 
 st.title("Cloud classification project")
 
-st.header("cloud Segmentation Example with FPN-RESNET50 model ")
+st.header("cloud Segmentation Example ")
 
 st.text("Upload a image of cloud")
 
@@ -113,8 +136,11 @@ if image_path is not None:
      image_array = np.asarray(image)/ 255.
      data[0] = image_array
      st.text(data.shape) 
-     batch_pred_masks = model.predict(data)
-     visualize_image_mask_prediction(image,batch_pred_masks)
+     batch_pred_masks_FPN = model_FPN.predict(data)
+     st.text("Prediction FPN - resnet50")
+     visualize_image_mask_prediction(image,batch_pred_masks_FPN)
+     st.text("Prediction UNET - resnet50")
+     visualize_image_mask_prediction(image,batch_pred_masks_UNET)
 
 
 
