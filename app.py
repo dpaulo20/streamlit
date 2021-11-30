@@ -57,7 +57,6 @@ model = sm.FPN(BACKBONE,
                 encoder_freeze=False)
 
 #Downloading h5
-url = 'https://drive.google.com/uc?export=download&id=18v5OxWsw-TqlsfTnURev2E_qECib2xnQ'
 
 def download_file_from_google_drive(id, destination):
     URL = "https://drive.google.com/uc?export=download"
@@ -96,11 +95,11 @@ destination = 'FTP.h5'
 download_file_from_google_drive(file_id, destination)
 model.load_weights('FTP.h5')
 
-uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
-if uploaded_file is not None:
-   model.load_weights(uploaded_file)
-else:
-   st.text("Non")
+#uploaded_file = st.file_uploader("Choose a H5 ...", type="h5")
+#if uploaded_file is not None:
+#   model.load_weights(uploaded_file)
+#else:
+#   st.text("Non")
     
 
 image_path = st.file_uploader("Choose a image", type="jpg")
