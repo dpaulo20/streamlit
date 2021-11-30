@@ -28,7 +28,8 @@ def visualize_image_mask_prediction(image,mask_prediction):
 
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
-    st.image(image, caption='Uploaded cloud image.', use_column_width=True)
+    if image is not None:
+        st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
@@ -142,7 +143,7 @@ with st.spinner('Wait for it...'):
          st.text("Prediction FPN - resnet50")
          visualize_image_mask_prediction(image,batch_pred_masks_FPN)
          st.text("Prediction UNET - resnet50")
-         visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+         visualize_image_mask_prediction(None,batch_pred_masks_UNET)
 
 
 
