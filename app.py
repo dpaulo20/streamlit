@@ -86,9 +86,9 @@ model_FPN = sm.FPN(BACKBONE,
 
 
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
-destination = 'FPN-resnet50.h5'
+destination = 'FPNresnet50.h5'
 download_file_from_google_drive(file_id, destination)
-model_FPN.load_weights('FPN-resnet50.h5')
+model_FPN.load_weights('FPNresnet50.h5')
 
 ###########################################
 
