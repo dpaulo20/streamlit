@@ -233,7 +233,9 @@ if image_path is not None:
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
      st.text("Classification avec VGG16")
-     prediction_class_VGG16 = model_VGG16.predict(image_array)
+     with graph.as_default():
+         prediction_class_VGG16 = model_VGG16.predict(data)
+
      st.text(prediction_class_VGG16)
         
 
