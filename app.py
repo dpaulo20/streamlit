@@ -160,12 +160,14 @@ def build_UNET_resnet50():
 def vgg16_classfication():
     
     global model_VGG16
-    model_VGG16 = Sequential()
 
     base_model = VGG16(include_top=False,
                                    weights="imagenet",
                                    input_shape=(HEIGHT, WIDTH, CHANNELS))
 
+    for layer in base_model.layers:
+        layer.trainable = False
+    
     model_VGG16 = Sequential()
     model_VGG16.add(base_model)
     model_VGG16.add(Flatten())
