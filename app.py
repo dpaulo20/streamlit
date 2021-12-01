@@ -166,10 +166,10 @@ def vgg16_classfication():
                                    weights="imagenet",
                                    input_shape=(HEIGHT, WIDTH, CHANNELS))
 
-    model_VGG16  = Sequential()
-    model_VGG16 .add(base_model)
-    model_VGG16 .add(Flatten())
-    model_VGG16 .add(Dense(units = NB_CLASSES, activation = "sigmoid"))
+    model_VGG16 = Sequential()
+    model_VGG16.add(base_model)
+    model_VGG16.add(Flatten())
+    model_VGG16.add(Dense(units = NB_CLASSES, activation = "sigmoid"))
 
 #    file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
 #    destination = 'VGG16.h5'
