@@ -14,7 +14,6 @@ import urllib3
 import requests
 
 
-
 HEIGHT = 320
 WIDTH = 480
 CHANNELS = 3 
@@ -28,7 +27,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     if image is not None:
         st.image(image, caption='Uploaded cloud image.', use_column_width=True)
-    cols = st.columns(4) 
+    cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
         cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
