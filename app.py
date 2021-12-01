@@ -233,7 +233,7 @@ if image_path is not None:
      data_C[0] = image_array_C
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
    
-    batch_pred_masks_UNET = model_UNET.predict(data_S)
+     batch_pred_masks_UNET = model_UNET.predict(data_S)
         
      st.subheader("Prédiction modéle UNET - Resnet50")
 
