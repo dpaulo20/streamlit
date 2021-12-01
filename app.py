@@ -77,42 +77,47 @@ def save_response_content(response, destination):
 
 ### création du modéle FPN-resnet50 +Download des poids
 
-BACKBONE = 'resnet50'
 
-## modifie les noms des layers pour quelles soient uniques
-model_FPN = sm.FPN(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
-
-i=1
-for layer in model_FPN.layers:
-      layer.name = layer.name + str("_FPN")+str(i)
-      i=i+1
-
-####
-
-file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
-destination = 'FPN-resnet50.h5'
-#download_file_from_google_drive(file_id, destination)
-#model.load_weights('FPN-resnet50.h5')
-
-
-try:
-    @st.cache
-    download_file_from_google_drive(file_id, destination)
-except ValueError:
-    st.error("erreur chargement H5")
+@st.cache
+def build_FPN_resnet50():
     
-try:
-    
-    model_FPN.load_weights('FPN-resnet50.h5')
-except ValueError:
-    st.error("erreur chargement poids")
+    BACKBONE = 'resnet50'
+
+    ## modifie les noms des layers pour quelles soient uniques
+    model_FPN = sm.FPN(BACKBONE, 
+                    classes=NB_CLASSES,
+                    input_shape=(HEIGHT, WIDTH, CHANNELS),
+                    encoder_weights='imagenet',
+                    activation='sigmoid',
+                    encoder_freeze=False)
+
+    i=1
+    for layer in model_FPN.layers:
+          layer.name = layer.name + str("_FPN")+str(i)
+          i=i+1
+
+    ####
+
+    file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
+    destination = 'FPN-resnet50.h5'
+    #download_file_from_google_drive(file_id, destination)
+    #model.load_weights('FPN-resnet50.h5')
+
+
+    try:
+        download_file_from_google_drive(file_id, destination)
+    except ValueError:
+        st.error("erreur chargement H5")
+
+    try:
+
+        model_FPN.load_weights('FPN-resnet50.h5')
+    except ValueError:
+        st.error("erreur chargement poids")
 
 ###########################################
+build_FPN_resnet50()
+
 
 ## création du modéle UNET-resnet50 +Download des poids
 
