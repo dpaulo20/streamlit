@@ -171,7 +171,7 @@ def vgg16_classfication():
     model_VGG16.add(Flatten())
     model_VGG16.add(Dense(units = NB_CLASSES, activation = "sigmoid"))
 
-    file_id = '1ulaQnJy6iTSF8JZ6PhpQg5MoIH16fVj' ## Id du fichier sur le drive 
+    file_id = '1ulaQnJy6iTSF8JZ6PhpQg5MoIH16fVj-' ## Id du fichier sur le drive 
     destination = 'VGG16.h5'
     
 
