@@ -1,4 +1,5 @@
 numpy
+imgaug
 opencv-python-headless
 segmentation_models
 tensorflow==1.14.0
