@@ -158,7 +158,8 @@ def build_UNET_resnet50():
 
 def vgg16_classfication():
     
-    global model = Sequential()
+    global model 
+    model = Sequential()
 
     base_model = VGG16(include_top=False,
                                    weights="imagenet",
