@@ -20,9 +20,9 @@ from keras.layers import LSTM, Dense, RepeatVector,TimeDistributed, Input, Globa
 from keras.layers import Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, Dropout
 
 #K.clear_session()
-graph = tf.get_default_graph()
-graph2 = tf.get_default_graph()
-graph3 = tf.get_default_graph()
+#graph = tf.get_default_graph()
+#graph2 = tf.get_default_graph()
+#graph3 = tf.get_default_graph()
 
 
 ######params généraux #########
@@ -232,8 +232,8 @@ if image_path is not None:
      data_S[0] = image_array
      data_C[0] = image_array_C
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
-     with graph.as_default():
-        batch_pred_masks_UNET = model_UNET.predict(data_S)
+   
+    batch_pred_masks_UNET = model_UNET.predict(data_S)
         
      st.subheader("Prédiction modéle UNET - Resnet50")
 
@@ -241,14 +241,14 @@ if image_path is not None:
         
      st.subheader("Prédiction modéle FPN - Resnet50")
     
-     with graph2.as_default():
-        batch_pred_masks_FPN = model_FPN.predict(data_S)
+
+     batch_pred_masks_FPN = model_FPN.predict(data_S)
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
      st.subheader("Classification avec VGG16 (probalilité)")
-     with graph3.as_default():
-         prediction_class_VGG16 = model_VGG16.predict(data_C)
+
+     prediction_class_VGG16 = model_VGG16.predict(data_C)
             
      class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
      cols = st.columns(4) 
