@@ -85,9 +85,9 @@ model_FPN = sm.FPN(BACKBONE,
 
 
 
-#file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
-#destination_FPN = 'FPNresnet50.h5'
-#download_file_from_google_drive(file_id, destination_FPN)
+file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
+destination_FPN = 'FPNresnet50.h5'
+download_file_from_google_drive(file_id, destination_FPN)
 
 ###########################################
 
@@ -142,10 +142,10 @@ with st.spinner('Wait for it...'):
          image_array = np.asarray(image)/ 255.
          data[0] = image_array
          st.text(data.shape) 
-         batch_pred_masks_UNET = model_UNET.predict(data)
+         batch_pred_masks_FPN = model_FPN.predict(data)
          st.text("Prediction FPN - resnet50")
          st.text("Prediction UNET - resnet50")
-         visualize_image_mask_prediction(None,batch_pred_masks_UNET)
+         visualize_image_mask_prediction(None,batch_pred_masks_FPN)
 
 
 
