@@ -117,8 +117,6 @@ def build_FPN_resnet50():
 
     model_FPN.load_weights('FPN-resnet50.h5')
 
-    return model_FPN
-
 ###########################################
 
 
@@ -168,11 +166,6 @@ def vgg16_classfication():
                                    weights="imagenet",
                                    input_shape=(HEIGHT, WIDTH, CHANNELS))
 
-    # entrainement des couches du modele
-    for layer in base_model.layers:
-        layer.trainable = False
-
-    # Construction du modele
     model = Sequential()
     model.add(base_model)
     model.add(Flatten())
