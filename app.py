@@ -118,7 +118,8 @@ def build_FPN_resnet50():
 ###########################################
 build_FPN_resnet50()
 
-
+@st.cache
+def build_UNET_resnet50():
 ## création du modéle UNET-resnet50 +Download des poids
 
 BACKBONE = 'resnet50'
@@ -156,7 +157,8 @@ except ValueError:
 
 ###########################################
 
-
+build_FPN_resnet50()
+build_UNET_resnet50()
 
 
 
