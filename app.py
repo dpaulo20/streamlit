@@ -80,7 +80,7 @@ def save_response_content(response, destination):
 
 @st.cache
 def build_FPN_resnet50():
-    
+    global model_FPN
     BACKBONE = 'resnet50'
 
     ## modifie les noms des layers pour quelles soient uniques
@@ -120,7 +120,7 @@ def build_FPN_resnet50():
 @st.cache
 def build_UNET_resnet50():
     ## création du modéle UNET-resnet50 +Download des poids
-
+    global model_UNET
     BACKBONE = 'resnet50'
 
 
@@ -152,12 +152,11 @@ def build_UNET_resnet50():
 
     model_UNET.load_weights('UNET-resnet50.h5')
 
-    return model_UNET
 
 ###########################################
 
-model_FPN=build_FPN_resnet50()
-model_UNET=build_UNET_resnet50()
+build_FPN_resnet50()
+build_UNET_resnet50()
 
 
 
