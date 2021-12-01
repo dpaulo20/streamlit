@@ -160,16 +160,29 @@ def build_UNET_resnet50():
 def vgg16_classfication():
     
     global model 
-    model = Sequential()
+    model_VGG16 = Sequential()
 
     base_model = VGG16(include_top=False,
                                    weights="imagenet",
                                    input_shape=(HEIGHT, WIDTH, CHANNELS))
 
-    model = Sequential()
-    model.add(base_model)
-    model.add(Flatten())
-    model.add(Dense(units = NB_CLASSES, activation = "sigmoid"))
+    model_VGG16  = Sequential()
+    model_VGG16 .add(base_model)
+    model_VGG16 .add(Flatten())
+    model_VGG16 .add(Dense(units = NB_CLASSES, activation = "sigmoid"))
+
+#    file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
+#    destination = 'VGG16.h5'
+    #download_file_from_google_drive(file_id, destination)
+
+#    try:
+#        download_file_from_google_drive(file_id, destination)
+#    except ValueError:
+#        st.error("erreur chargement H5")
+    
+    #model_VGG16.load_weights('VGG16.h5')
+        
+        
 
 
 ###########################################
@@ -216,5 +229,11 @@ if image_path is not None:
         batch_pred_masks_FPN = model_FPN.predict(data)
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
+    
+     st.text("Classification avec VGG16")
+     prediction_class_VGG16 = model_VGG16.predict(image)
+     st.text(prediction_class_VGG16)
+        
+
 
 
