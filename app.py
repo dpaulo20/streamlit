@@ -27,8 +27,8 @@ def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
 
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
-    
-    st.image(image, caption='Uploaded cloud image.', use_column_width=True)
+    if image is not None:
+        st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
@@ -75,7 +75,7 @@ def save_response_content(response, destination):
 
 BACKBONE = 'resnet50'
 
-model = sm.FPN(BACKBONE, 
+model_FPN = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
@@ -97,11 +97,47 @@ except ValueError:
     st.error("erreur chargement H5")
     
 try:
-    model.load_weights('FPN-resnet50.h5')
+    model_FPN.load_weights('FPN-resnet50.h5')
 except ValueError:
     st.error("erreur chargement poids")
 
 ###########################################
+
+## création du modéle UNET-resnet50 +Download des poids
+
+BACKBONE = 'resnet50'
+
+model_UNET = sm.Unet(BACKBONE, 
+                classes=NB_CLASSES,
+                input_shape=(HEIGHT, WIDTH, CHANNELS),
+                encoder_weights='imagenet',
+                activation='sigmoid',
+                encoder_freeze=False)
+
+
+
+
+file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
+destination = 'UNET-resnet50.h5'
+#download_file_from_google_drive(file_id, destination)
+#model.load_weights('UNET-resnet50.h5')
+
+
+try:
+    download_file_from_google_drive(file_id, destination)
+except ValueError:
+    st.error("erreur chargement H5")
+    
+try:
+    model_UNET.load_weights('UNET-resnet50.h5')
+except ValueError:
+    st.error("erreur chargement poids")
+
+###########################################
+
+
+
+
 
 #########Streamlit section###############
 
@@ -125,8 +161,10 @@ if image_path is not None:
      image_array = np.asarray(image)/ 255.
      data[0] = image_array
      st.text(data.shape) 
-     batch_pred_masks = model.predict(data)
-     visualize_image_mask_prediction(image,batch_pred_masks)
+     batch_pred_masks_UNET = model_UNET.predict(data)
+     visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+     batch_pred_masks_FPN = model_FPN.predict(data)
+     visualize_image_mask_prediction(None,batch_pred_masks_UNET)
 
 
 
