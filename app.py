@@ -74,14 +74,14 @@ def save_response_content(response, destination):
 
 ### création du modéle FPN-resnet50 +Download des poids
 
-#BACKBONE = 'resnet50'
+BACKBONE = 'resnet50'
 
-#model_FPN = sm.FPN(BACKBONE, 
-#                classes=NB_CLASSES,
-#                input_shape=(HEIGHT, WIDTH, CHANNELS),
-#                encoder_weights='imagenet',
-#                activation='sigmoid',
-#                encoder_freeze=False)
+model_FPN = sm.FPN(BACKBONE, 
+                classes=NB_CLASSES,
+                input_shape=(HEIGHT, WIDTH, CHANNELS),
+                encoder_weights='imagenet',
+                activation='sigmoid',
+                encoder_freeze=False)
 
 
 
@@ -93,14 +93,14 @@ def save_response_content(response, destination):
 
 ### création du modéle UNET-resnet50 +Download des poids
 
-BACKBONE = 'resnet50'
+#BACKBONE = 'resnet50'
 
-model_UNET = sm.Unet(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
+#model_UNET = sm.Unet(BACKBONE, 
+#                classes=NB_CLASSES,
+#                input_shape=(HEIGHT, WIDTH, CHANNELS),
+#                encoder_weights='imagenet',
+#                activation='sigmoid',
+#                encoder_freeze=False)
 
 
 
