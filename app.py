@@ -108,11 +108,11 @@ file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive goog
 destination_UNET = 'UNET-resnet50.h5'
 download_file_from_google_drive(file_id, destination)
 
-with st.spinner('Chargement UNET-resnet50.h5'...'):
+with st.spinner('Chargement UNET-resnet50.h5'):
     if destination_UNET is not None:
     model_UNET.load_weights('UNET-resnet50.h5')
                 
-with st.spinner('Chargement FPNresnet50.h5'...'):
+with st.spinner('Chargement FPNresnet50.h5'):
     if destination_FPN is not None:
     model_FPN.load_weights('FPNresnet50.h5')
 
