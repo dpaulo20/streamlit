@@ -116,7 +116,7 @@ model_UNET = sm.Unet(BACKBONE,
                 encoder_freeze=False
 
 for layer in model_UNET.layers:
-   layer.name = layer.name + str("_UNET")
+    layer.name = layer.name + str("_UNET")
 
 
 
