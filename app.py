@@ -74,21 +74,21 @@ def save_response_content(response, destination):
 
 ### création du modéle FPN-resnet50 +Download des poids
 
-BACKBONE = 'resnet50'
+#BACKBONE = 'resnet50'
 
-model_FPN = sm.FPN(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
+#model_FPN = sm.FPN(BACKBONE, 
+#                classes=NB_CLASSES,
+#                input_shape=(HEIGHT, WIDTH, CHANNELS),
+#                encoder_weights='imagenet',
+#                activation='sigmoid',
+#                encoder_freeze=False)
 
 
 
-file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
-destination = 'FPNresnet50.h5'
-download_file_from_google_drive(file_id, destination)
-model_FPN.load_weights('FPNresnet50.h5')
+#file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
+#destination = 'FPNresnet50.h5'
+#download_file_from_google_drive(file_id, destination)
+#model_FPN.load_weights('FPNresnet50.h5')
 
 ###########################################
 
@@ -138,10 +138,8 @@ with st.spinner('Wait for it...'):
          image_array = np.asarray(image)/ 255.
          data[0] = image_array
          st.text(data.shape) 
-         batch_pred_masks_FPN = model_FPN.predict(data)
          batch_pred_masks_UNET = model_UNET.predict(data)
          st.text("Prediction FPN - resnet50")
-         visualize_image_mask_prediction(image,batch_pred_masks_FPN)
          st.text("Prediction UNET - resnet50")
          visualize_image_mask_prediction(None,batch_pred_masks_UNET)
 
