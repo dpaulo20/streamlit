@@ -12,6 +12,9 @@ from keras.models import load_model
 from PIL import Image, ImageOps
 import urllib3
 import requests
+from streamlit import caching
+
+caching.clear_cache()
 
 
 HEIGHT = 320
