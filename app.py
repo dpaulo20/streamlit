@@ -222,7 +222,6 @@ if image_path is not None:
      image_array_C = np.asarray(image_C)/ 255.
      data_S[0] = image_array
      data_C[0] = image_array_C
-     st.text(data.shape) 
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      with graph.as_default():
         batch_pred_masks_UNET = model_UNET.predict(data_S)
