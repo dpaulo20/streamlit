@@ -28,8 +28,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
 
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
     
-    if image is not None:
-        st.image(image, caption='Uploaded cloud image.', use_column_width=True)
+    st.image(image, caption='Uploaded cloud image.', use_column_width=True)
     cols = st.beta_columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
@@ -76,7 +75,7 @@ def save_response_content(response, destination):
 
 BACKBONE = 'resnet50'
 
-model_FPN = sm.FPN(BACKBONE, 
+model = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
@@ -85,45 +84,18 @@ model_FPN = sm.FPN(BACKBONE,
 
 
 
-file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
-destination_FPN = 'FPNresnet50.h5'
-download_file_from_google_drive(file_id, destination_FPN)
+file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
+destination = 'FPN-resnet50.h5'
+download_file_from_google_drive(file_id, destination)
+model.load_weights('FPN-resnet50.h5')
 
 ###########################################
-
-### création du modéle UNET-resnet50 +Download des poids
-
-#BACKBONE = 'resnet50'
-
-#model_UNET = sm.Unet(BACKBONE, 
-#                classes=NB_CLASSES,
-#                input_shape=(HEIGHT, WIDTH, CHANNELS),
-#                encoder_weights='imagenet',
-#                activation='sigmoid',
-#                encoder_freeze=False)
-
-
-
-#file_id_UNET = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive google
-#destination_UNET = 'UNET_resnet50.h5'
-#download_file_from_google_drive(file_id_UNET, destination_UNET)
-
-############################
-                
-#with st.spinner('Chargement FPNresnet50.h5'):
-#    if destination_FPN is not None:
-#        model_FPN.load_weights('FPNresnet50.h5')
-
-###########################################
-
-
-
 
 #########Streamlit section###############
 
 st.title("Cloud classification project")
 
-st.header("cloud Segmentation Example ")
+st.header("cloud Segmentation Example with FPN-RESNET50 model ")
 
 st.text("Upload a image of cloud")
 
@@ -131,22 +103,19 @@ st.text("Upload a image of cloud")
 
 image_path = st.file_uploader("Choose a image", type="jpg")
 
-with st.spinner('Wait for it...'):
-    if image_path is not None:
-         img = Image.open(image_path)
-         data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
-         image = img
-         #image sizing
-         size = (WIDTH,HEIGHT)
-         image = ImageOps.fit(image, size)
-         image_array = np.asarray(image)/ 255.
-         data[0] = image_array
-         st.text(data.shape) 
-         batch_pred_masks_FPN = model_FPN.predict(data)
-         st.text("Prediction FPN - resnet50")
-         st.text("Prediction UNET - resnet50")
-         visualize_image_mask_prediction(image,batch_pred_masks_FPN)
-
+if image_path is not None:
+     img = Image.open(image_path)
+     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
+     image = img
+     #image sizing
+     size = (WIDTH,HEIGHT)
+     image = ImageOps.fit(image, size)
+     image_array = np.asarray(image)/ 255.
+     data[0] = image_array
+     st.text(data.shape) 
+     batch_pred_masks = model.predict(data)
+     visualize_image_mask_prediction(image,batch_pred_masks)
+,
 
 
 
