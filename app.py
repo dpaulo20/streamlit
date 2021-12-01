@@ -162,8 +162,6 @@ if image_path is not None:
      st.text(data.shape) 
      batch_pred_masks_UNET = model_UNET.predict(data)
      st.text("Prédiction modéle UNET - Resnet50")
-     
-     K.clear_session()
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
      st.text("Prédiction modéle FPN - Resnet50")
      batch_pred_masks_FPN = model_FPN.predict(data)
