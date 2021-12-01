@@ -141,15 +141,15 @@ except ValueError:
 
 #########Streamlit section###############
 
-st.title("Cloud classification project")
+st.title("Projet des régions nuageuses")
 
-st.header("cloud Segmentation Example with FPN-RESNET50 model ")
+st.header("Exemple de modéles de segmentation ")
 
-st.text("Upload a image of cloud")
+st.text("télécharger une image de nuage au format .jpg")
 
 ### Downloading du image, détection et affichage des prédictions
 
-image_path = st.file_uploader("Choose a image", type="jpg")
+image_path = st.file_uploader("Choisir une image", type="jpg")
 
 if image_path is not None:
      img = Image.open(image_path)
@@ -162,9 +162,11 @@ if image_path is not None:
      data[0] = image_array
      st.text(data.shape) 
      batch_pred_masks_UNET = model_UNET.predict(data)
+     st.text("Prédiction modéle UNET - Resnet50")
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+    st.text("Prédiction modéle FPN - Resnet50")
      batch_pred_masks_FPN = model_FPN.predict(data)
-     visualize_image_mask_prediction(None,batch_pred_masks_UNET)
+     visualize_image_mask_prediction(None,batch_pred_masks_FPN)
 
 
 
