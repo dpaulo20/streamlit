@@ -28,9 +28,7 @@ def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
 
     class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
-    if image is not None:
-        st.image(image, caption='Uploaded cloud image.', use_column_width=True)
-    cols = st.beta_columns(4) 
+    cols = st.columns(4) 
     for i in range(4):
         title='class  '+class_dict[i]
         cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
@@ -85,7 +83,7 @@ model_FPN = sm.FPN(BACKBONE,
 
 i=1
 for layer in model_FPN.layers:
-      layer.name = layer.name + str("_UNET")+str(i)
+      layer.name = layer.name + str("_FPN")+str(i)
       i=i+1
 
 
@@ -171,6 +169,7 @@ if image_path is not None:
      image_array = np.asarray(image)/ 255.
      data[0] = image_array
      st.text(data.shape) 
+     st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      batch_pred_masks_UNET = model_UNET.predict(data)
      st.text("Prédiction modéle UNET - Resnet50")
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
