@@ -16,13 +16,14 @@ from keras import backend as K
 K.clear_session()
 
 
+######params généraux #########
 
 HEIGHT = 320
 WIDTH = 480
 CHANNELS = 3 
 NB_CLASSES = 4
 
-######fonction de visualisation#########
+######fonction de visualisation des détéctions #########
 
 def visualize_image_mask_prediction(image,mask_prediction):
     """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
@@ -74,6 +75,7 @@ def save_response_content(response, destination):
 
 BACKBONE = 'resnet50'
 
+## modifie les noms des layers pour quelles soient uniques
 model_FPN = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
@@ -86,6 +88,7 @@ for layer in model_FPN.layers:
       layer.name = layer.name + str("_FPN")+str(i)
       i=i+1
 
+####
 
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
 destination = 'FPN-resnet50.h5'
@@ -116,14 +119,13 @@ model_UNET = sm.Unet(BACKBONE,
                 activation='sigmoid',
                 encoder_freeze=False)
 
+## modifie les noms des layers pour quelles soient uniques
 i=1
 for layer in model_UNET.layers:
 
      layer.name = layer.name + str("_UNET")+str(i)
      i=i+1
-
-
-
+###
 
 file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
 destination = 'UNET-resnet50.h5'
@@ -147,7 +149,7 @@ except ValueError:
 
 
 
-#########Streamlit section###############
+#########Streamlit Section###############
 
 st.title("Projet des régions nuageuses")
 
@@ -172,6 +174,7 @@ if image_path is not None:
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      batch_pred_masks_UNET = model_UNET.predict(data)
      st.text("Prédiction modéle UNET - Resnet50")
+     st.text(model_UNET.summary())
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
      st.text("Prédiction modéle FPN - Resnet50")
      batch_pred_masks_FPN = model_FPN.predict(data)
