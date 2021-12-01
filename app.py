@@ -111,9 +111,10 @@ def build_FPN_resnet50():
 
     try:
 
-        model_FPN.load_weights('FPN-resnet50.h5')
+        model=model_FPN.load_weights('FPN-resnet50.h5')
     except ValueError:
         st.error("erreur chargement poids")
+    return model
 
 ###########################################
 
@@ -150,14 +151,15 @@ def build_UNET_resnet50():
         st.error("erreur chargement H5")
 
     try:
-        model_UNET.load_weights('UNET-resnet50.h5')
+         model=model_UNET.load_weights('UNET-resnet50.h5')
     except ValueError:
         st.error("erreur chargement poids")
+    return model
 
 ###########################################
 
-build_FPN_resnet50()
-build_UNET_resnet50()
+model_FPN=build_FPN_resnet50()
+model_UNET=build_UNET_resnet50()
 
 
 
