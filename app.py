@@ -99,13 +99,15 @@ destination = 'FPN-resnet50.h5'
 #download_file_from_google_drive(file_id, destination)
 #model.load_weights('FPN-resnet50.h5')
 
-@st.cache
+
 try:
+    @st.cache
     download_file_from_google_drive(file_id, destination)
 except ValueError:
     st.error("erreur chargement H5")
     
 try:
+    
     model_FPN.load_weights('FPN-resnet50.h5')
 except ValueError:
     st.error("erreur chargement poids")
