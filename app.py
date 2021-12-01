@@ -13,6 +13,8 @@ from PIL import Image, ImageOps
 import urllib3
 import requests
 from keras import backend as K
+K.clear_session()
+
 
 
 HEIGHT = 320
@@ -166,7 +168,5 @@ if image_path is not None:
      st.text("Prédiction modéle FPN - Resnet50")
      batch_pred_masks_FPN = model_FPN.predict(data)
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
-     K.clear_session()
-
 
 
