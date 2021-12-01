@@ -22,6 +22,7 @@ from keras.layers import Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, D
 K.clear_session()
 graph = tf.get_default_graph()
 graph2 = tf.get_default_graph()
+graph3 = tf.get_default_graph()
 
 
 ######params généraux #########
@@ -209,17 +210,22 @@ image_path = st.file_uploader("Choisir une image", type="jpg")
 
 if image_path is not None:
      img = Image.open(image_path)
-     data = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
+     data_S = np.ndarray(shape=(1, HEIGHT,WIDTH, 3), dtype=np.float32)
+     data_C = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+     
      image = img
      #image sizing
      size = (WIDTH,HEIGHT)
      image = ImageOps.fit(image, size)
+     image_C = ImageOps.fit(image, (224, 224))
      image_array = np.asarray(image)/ 255.
-     data[0] = image_array
+     image_array_C = np.asarray(image_C)/ 255.
+     data_S[0] = image_array
+     data_C[0] = image_array_C
      st.text(data.shape) 
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      with graph.as_default():
-        batch_pred_masks_UNET = model_UNET.predict(data)
+        batch_pred_masks_UNET = model_UNET.predict(data_S)
         
      st.text("Prédiction modéle UNET - Resnet50")
 
@@ -228,13 +234,13 @@ if image_path is not None:
      st.text("Prédiction modéle FPN - Resnet50")
     
      with graph2.as_default():
-        batch_pred_masks_FPN = model_FPN.predict(data)
+        batch_pred_masks_FPN = model_FPN.predict(data_S)
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
      st.text("Classification avec VGG16")
-     with graph.as_default():
-         prediction_class_VGG16 = model_VGG16.predict(data)
+     with graph3.as_default():
+         prediction_class_VGG16 = model_VGG16.predict(data_C)
 
      st.text(prediction_class_VGG16)
         
