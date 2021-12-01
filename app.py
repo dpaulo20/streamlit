@@ -104,15 +104,11 @@ model_UNET = sm.Unet(BACKBONE,
 
 
 
-file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive google
-destination_UNET = 'UNET-resnet50.h5'
-download_file_from_google_drive(file_id, destination_UNET)
+file_id_UNET = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive google
+destination_UNET = 'UNET_resnet50.h5'
+download_file_from_google_drive(file_id_UNET, destination_UNET)
 
 ############################
-
-with st.spinner('Chargement UNET-resnet50.h5'):
-    if destination_UNET is not None:
-        model_UNET.load_weights('UNET-resnet50.h5')
                 
 #with st.spinner('Chargement FPNresnet50.h5'):
 #    if destination_FPN is not None:
