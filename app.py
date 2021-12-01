@@ -144,7 +144,6 @@ destination = 'UNET-resnet50.h5'
 #download_file_from_google_drive(file_id, destination)
 #model.load_weights('UNET-resnet50.h5')
 
-@st.cache
 try:
     download_file_from_google_drive(file_id, destination)
 except ValueError:
