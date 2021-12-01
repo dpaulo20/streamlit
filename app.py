@@ -163,7 +163,7 @@ def vgg16_classfication():
 
     base_model = VGG16(include_top=False,
                                    weights="imagenet",
-                                   input_shape=(HEIGHT, WIDTH, CHANNELS))
+                                   input_shape=(224, 224, CHANNELS))
 
     for layer in base_model.layers:
         layer.trainable = False
