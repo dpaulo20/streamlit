@@ -84,10 +84,22 @@ model = sm.FPN(BACKBONE,
 
 
 
+
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
 destination = 'FPN-resnet50.h5'
-download_file_from_google_drive(file_id, destination)
-model.load_weights('FPN-resnet50.h5')
+#download_file_from_google_drive(file_id, destination)
+#model.load_weights('FPN-resnet50.h5')
+
+
+try:
+    download_file_from_google_drive(file_id, destination)
+except ValueError:
+    st.error("erreur chargement H5")
+    
+try:
+    model.load_weights('FPN-resnet50.h5')
+except ValueError:
+    st.error("erreur chargement poids")
 
 ###########################################
 
