@@ -15,7 +15,6 @@ import requests
 from keras import backend as K
 import tensorflow as tf
 
-@st.cache
 K.clear_session()
 graph = tf.get_default_graph()
 graph2 = tf.get_default_graph()
@@ -81,6 +80,7 @@ def save_response_content(response, destination):
 BACKBONE = 'resnet50'
 
 ## modifie les noms des layers pour quelles soient uniques
+@st.cache
 model_FPN = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
@@ -100,7 +100,7 @@ destination = 'FPN-resnet50.h5'
 #download_file_from_google_drive(file_id, destination)
 #model.load_weights('FPN-resnet50.h5')
 
-
+@st.cache
 try:
     download_file_from_google_drive(file_id, destination)
 except ValueError:
@@ -117,6 +117,7 @@ except ValueError:
 
 BACKBONE = 'resnet50'
 
+@st.cache
 model_UNET = sm.Unet(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
@@ -137,7 +138,7 @@ destination = 'UNET-resnet50.h5'
 #download_file_from_google_drive(file_id, destination)
 #model.load_weights('UNET-resnet50.h5')
 
-
+@st.cache
 try:
     download_file_from_google_drive(file_id, destination)
 except ValueError:
