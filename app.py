@@ -13,7 +13,10 @@ from PIL import Image, ImageOps
 import urllib3
 import requests
 from keras import backend as K
+import tensorflow as tf
+
 K.clear_session()
+graph = tf.get_default_graph()
 
 
 ######params généraux #########
@@ -172,7 +175,8 @@ if image_path is not None:
      data[0] = image_array
      st.text(data.shape) 
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
-     batch_pred_masks_UNET = model_UNET.predict(data)
+     with graph.as_default():
+        batch_pred_masks_UNET = model_UNET.predict(data)
      st.text("Prédiction modéle UNET - Resnet50")
      st.text(model_UNET.summary())
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
