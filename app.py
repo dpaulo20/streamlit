@@ -247,8 +247,9 @@ if image_path is not None:
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
      st.subheader("Classification avec VGG16 (probalilité)")
-
+  
      prediction_class_VGG16 = model_VGG16.predict(data_C)
+     st.text(prediction_class_VGG16)
             
      class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
      cols = st.columns(4) 
