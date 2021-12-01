@@ -43,6 +43,15 @@ def visualize_image_mask_prediction(image,mask_prediction):
         title='class  '+class_dict[i]
         cols[i].image(mask_prediction[0,:, :,i],caption=title,width=100)
 
+def probability_VGG16_display(prediction):
+    """ Fonction pour visualiser l'image original, le mask original et le mask predit"""
+
+    class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
+    cols = st.columns(4) 
+    for i in range(4):
+        title='class  '+class_dict[i]
+        cols[i].text(prediction[i])
+
 
 ###########################################
 
@@ -240,8 +249,14 @@ if image_path is not None:
      st.text("Classification avec VGG16")
      with graph3.as_default():
          prediction_class_VGG16 = model_VGG16.predict(data_C)
+            
+    class_dict = {0: 'Fish', 1: 'Flower', 2: 'Gravel', 3: 'Sugar'}
+    cols = st.columns(4) 
+    for i in range(4):
+        title='class  '+class_dict[i]
+        cols[i].text(prediction[i])
 
-     st.text(prediction_class_VGG16)
+   #  st.text(prediction_class_VGG16)
         
 
 
