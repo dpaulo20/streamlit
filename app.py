@@ -17,6 +17,7 @@ import tensorflow as tf
 
 K.clear_session()
 graph = tf.get_default_graph()
+graph2 = tf.get_default_graph()
 
 
 ######params généraux #########
@@ -177,11 +178,16 @@ if image_path is not None:
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
      with graph.as_default():
         batch_pred_masks_UNET = model_UNET.predict(data)
+        
      st.text("Prédiction modéle UNET - Resnet50")
-     st.text(model_UNET.summary())
+
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
+        
      st.text("Prédiction modéle FPN - Resnet50")
-     batch_pred_masks_FPN = model_FPN.predict(data)
+    
+     with graph2.as_default():
+        batch_pred_masks_FPN = model_FPN.predict(data)
+        
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
 
 
