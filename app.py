@@ -15,6 +15,7 @@ import requests
 from keras import backend as K
 import tensorflow as tf
 
+@st.cache
 K.clear_session()
 graph = tf.get_default_graph()
 graph2 = tf.get_default_graph()
