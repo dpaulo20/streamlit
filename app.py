@@ -110,11 +110,11 @@ download_file_from_google_drive(file_id, destination)
 
 with st.spinner('Chargement UNET-resnet50.h5'):
     if destination_UNET is not None:
-    model_UNET.load_weights('UNET-resnet50.h5')
+        model_UNET.load_weights('UNET-resnet50.h5')
                 
 with st.spinner('Chargement FPNresnet50.h5'):
     if destination_FPN is not None:
-    model_FPN.load_weights('FPNresnet50.h5')
+        model_FPN.load_weights('FPNresnet50.h5')
 
 ###########################################
 
