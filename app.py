@@ -78,7 +78,7 @@ def save_response_content(response, destination):
 ### création du modéle FPN-resnet50 +Download des poids
 
 
-@st.cache
+#@st.cache
 def build_FPN_resnet50():
     global model_FPN
     BACKBONE = 'resnet50'
@@ -117,7 +117,7 @@ def build_FPN_resnet50():
 
 ###########################################
 
-@st.cache
+#@st.cache
 def build_UNET_resnet50():
     ## création du modéle UNET-resnet50 +Download des poids
     global model_UNET
