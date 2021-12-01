@@ -83,7 +83,10 @@ model_FPN = sm.FPN(BACKBONE,
                 activation='sigmoid',
                 encoder_freeze=False)
 
-
+i=1
+for layer in model_FPN.layers:
+    layer.name = layer.name + str("_UNET")+str(i)
+     i=i+1
 
 
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive 
@@ -115,8 +118,11 @@ model_UNET = sm.Unet(BACKBONE,
                 activation='sigmoid',
                 encoder_freeze=False)
 
+i=1
 for layer in model_UNET.layers:
-    layer.name = layer.name + str("_UNET")
+
+    layer.name = layer.name + str("_UNET")+str(i)
+     i=i+1
 
 
 
