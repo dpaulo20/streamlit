@@ -116,7 +116,6 @@ def build_FPN_resnet50():
         st.error("erreur chargement poids")
 
 ###########################################
-build_FPN_resnet50()
 
 @st.cache
 def build_UNET_resnet50():
