@@ -235,18 +235,18 @@ if image_path is not None:
      with graph.as_default():
         batch_pred_masks_UNET = model_UNET.predict(data_S)
         
-     st.text("Prédiction modéle UNET - Resnet50")
+     st.subheader("Prédiction modéle UNET - Resnet50")
 
      visualize_image_mask_prediction(image,batch_pred_masks_UNET)
         
-     st.text("Prédiction modéle FPN - Resnet50")
+     st.subheader("Prédiction modéle FPN - Resnet50")
     
      with graph2.as_default():
         batch_pred_masks_FPN = model_FPN.predict(data_S)
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
-     st.text("Classification avec VGG16")
+     st.subheader("Classification avec VGG16 (probalilité)")
      with graph3.as_default():
          prediction_class_VGG16 = model_VGG16.predict(data_C)
             
