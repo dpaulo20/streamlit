@@ -80,7 +80,6 @@ def save_response_content(response, destination):
 BACKBONE = 'resnet50'
 
 ## modifie les noms des layers pour quelles soient uniques
-@st.cache
 model_FPN = sm.FPN(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
@@ -117,7 +116,7 @@ except ValueError:
 
 BACKBONE = 'resnet50'
 
-@st.cache
+
 model_UNET = sm.Unet(BACKBONE, 
                 classes=NB_CLASSES,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
