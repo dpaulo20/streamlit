@@ -159,7 +159,7 @@ def build_UNET_resnet50():
 
 def vgg16_classfication():
     
-    global model 
+    global model_VGG16
     model_VGG16 = Sequential()
 
     base_model = VGG16(include_top=False,
@@ -171,16 +171,16 @@ def vgg16_classfication():
     model_VGG16.add(Flatten())
     model_VGG16.add(Dense(units = NB_CLASSES, activation = "sigmoid"))
 
-#    file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
-#    destination = 'VGG16.h5'
-    #download_file_from_google_drive(file_id, destination)
-
-#    try:
-#        download_file_from_google_drive(file_id, destination)
-#    except ValueError:
-#        st.error("erreur chargement H5")
+    file_id = '1ulaQnJy6iTSF8JZ6PhpQg5MoIH16fVj' ## Id du fichier sur le drive 
+    destination = 'VGG16.h5'
     
-    #model_VGG16.load_weights('VGG16.h5')
+
+    try:
+        download_file_from_google_drive(file_id, destination)
+    except ValueError:
+        st.error("erreur chargement H5")
+    
+    model_VGG16.load_weights('VGG16.h5')
         
         
 
