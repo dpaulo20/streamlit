@@ -120,40 +120,40 @@ build_FPN_resnet50()
 
 @st.cache
 def build_UNET_resnet50():
-## création du modéle UNET-resnet50 +Download des poids
+    ## création du modéle UNET-resnet50 +Download des poids
 
-BACKBONE = 'resnet50'
+    BACKBONE = 'resnet50'
 
 
-model_UNET = sm.Unet(BACKBONE, 
-                classes=NB_CLASSES,
-                input_shape=(HEIGHT, WIDTH, CHANNELS),
-                encoder_weights='imagenet',
-                activation='sigmoid',
-                encoder_freeze=False)
+    model_UNET = sm.Unet(BACKBONE, 
+                    classes=NB_CLASSES,
+                    input_shape=(HEIGHT, WIDTH, CHANNELS),
+                    encoder_weights='imagenet',
+                    activation='sigmoid',
+                    encoder_freeze=False)
 
-## modifie les noms des layers pour quelles soient uniques
-i=1
-for layer in model_UNET.layers:
+    ## modifie les noms des layers pour quelles soient uniques
+    i=1
+    for layer in model_UNET.layers:
 
-     layer.name = layer.name + str("_UNET")+str(i)
-     i=i+1
-###
+         layer.name = layer.name + str("_UNET")+str(i)
+         i=i+1
+    ###
 
-file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
-destination = 'UNET-resnet50.h5'
-#download_file_from_google_drive(file_id, destination)
-#model.load_weights('UNET-resnet50.h5')
+    file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive 
+    destination = 'UNET-resnet50.h5'
+    #download_file_from_google_drive(file_id, destination)
+    #model.load_weights('UNET-resnet50.h5')
 
-try:
-    download_file_from_google_drive(file_id, destination)
-except ValueError:
-    st.error("erreur chargement H5")
-    
-try:
-    model_UNET.load_weights('UNET-resnet50.h5')
-except ValueError:
-    st.error("erreur chargement poids")
+    try:
+        download_file_from_google_drive(file_id, destination)
+    except ValueError:
+        st.error("erreur chargement H5")
+
+    try:
+        model_UNET.load_weights('UNET-resnet50.h5')
+    except ValueError:
+        st.error("erreur chargement poids")
 
 ###########################################
 
