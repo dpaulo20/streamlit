@@ -145,7 +145,7 @@ with st.spinner('Wait for it...'):
          batch_pred_masks_FPN = model_FPN.predict(data)
          st.text("Prediction FPN - resnet50")
          st.text("Prediction UNET - resnet50")
-         visualize_image_mask_prediction(None,batch_pred_masks_FPN)
+         visualize_image_mask_prediction(image,batch_pred_masks_FPN)
 
 
 
