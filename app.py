@@ -14,6 +14,7 @@ import urllib3
 import requests
 from keras import backend as K
 import tensorflow as tf
+from tensorflow.keras.applications import VGG16
 
 K.clear_session()
 graph = tf.get_default_graph()
@@ -155,8 +156,30 @@ def build_UNET_resnet50():
 
 ###########################################
 
+def vgg16_classfication():
+    
+    global model = Sequential()
+
+    base_model = VGG16(include_top=False,
+                                   weights="imagenet",
+                                   input_shape=(HEIGHT, WIDTH, CHANNELS))
+
+    # entrainement des couches du modele
+    for layer in base_model.layers:
+        layer.trainable = False
+
+    # Construction du modele
+    model = Sequential()
+    model.add(base_model)
+    model.add(Flatten())
+    model.add(Dense(units = NB_CLASSES, activation = "sigmoid"))
+
+
+###########################################
+
 build_FPN_resnet50()
 build_UNET_resnet50()
+vgg16_classfication()
 
 
 
