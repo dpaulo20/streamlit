@@ -87,7 +87,7 @@ model_FPN = sm.FPN(BACKBONE,
 
 file_id = '17Th3xBfd0Qz3fKHl5vOesLANFOYfsU2s' ## Id du fichier sur le drive google
 destination_FPN = 'FPNresnet50.h5'
-download_file_from_google_drive(file_id, destination)
+download_file_from_google_drive(file_id, destination_FPN)
 
 ###########################################
 
@@ -106,7 +106,9 @@ model_UNET = sm.Unet(BACKBONE,
 
 file_id = '10PVYP69m-vgx0gHhZ2UadovP5dTup5TS' ## Id du fichier sur le drive google
 destination_UNET = 'UNET-resnet50.h5'
-download_file_from_google_drive(file_id, destination)
+download_file_from_google_drive(file_id, destination_UNET)
+
+############################
 
 with st.spinner('Chargement UNET-resnet50.h5'):
     if destination_UNET is not None:
