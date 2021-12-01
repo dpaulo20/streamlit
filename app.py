@@ -254,7 +254,7 @@ if image_path is not None:
      cols = st.columns(4) 
      for i in range(4):
          title='class  '+class_dict[i]
-         cols[i].header(prediction_class_VGG16[0][i])
+         cols[i].header(np.round(prediction_class_VGG16[0][i],2))
 
    #  st.text(prediction_class_VGG16)
         
