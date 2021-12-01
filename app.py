@@ -113,7 +113,10 @@ model_UNET = sm.Unet(BACKBONE,
                 input_shape=(HEIGHT, WIDTH, CHANNELS),
                 encoder_weights='imagenet',
                 activation='sigmoid',
-                encoder_freeze=False)
+                encoder_freeze=False
+
+for layer in model_UNET.layers:
+   layer.name = layer.name + str("_UNET")
 
 
 
