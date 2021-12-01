@@ -14,8 +14,6 @@ import urllib3
 import requests
 
 
-st.caching.clear_cache()
-
 
 HEIGHT = 320
 WIDTH = 480
