@@ -93,9 +93,9 @@ def save_response_content(response, destination):
 ### création du modéle FPN-resnet50 +Download des poids
 
 
-@st.cache
-def build_FPN_resnet50():
 
+def build_FPN_resnet50():
+    global model_FPN
     BACKBONE = 'resnet50'
 
     ## modifie les noms des layers pour quelles soient uniques
@@ -127,15 +127,13 @@ def build_FPN_resnet50():
 
 
     model_FPN.load_weights('FPN-resnet50.h5')
-    
-    return model_FPN
 
 ###########################################
 
-@st.cache
+
 def build_UNET_resnet50():
     ## création du modéle UNET-resnet50 +Download des poids
-
+    global model_UNET
     BACKBONE = 'resnet50'
 
 
@@ -165,13 +163,11 @@ def build_UNET_resnet50():
         st.error("erreur chargement H5")
 
 
- #   model_UNET.load_weights('UNET-resnet50.h5')
-    
-    return model_UNET
+    model_UNET.load_weights('UNET-resnet50.h5')
 
 
 ###########################################
-@st.cache
+
 def vgg16_classfication():
     
 
@@ -197,8 +193,7 @@ def vgg16_classfication():
         st.error("erreur chargement H5")
     
     model_VGG16.load_weights('VGG16.h5')
-    
-    return model_VGG16
+    st.text("bebebbebebebbebebebbebe")
         
         
 
@@ -225,11 +220,10 @@ def load_output_image(img):
 
 #########################################
 
-model_FPN=build_FPN_resnet50()
-model_UNET=build_UNET_resnet50()
-model_UNET.load_weights('UNET-resnet50.h5')
-model_VGG16=vgg16_classfication()
 
+build_FPN_resnet50()
+build_UNET_resnet50()
+vgg16_classfication()
 
 
 #########Streamlit Section###############
@@ -279,8 +273,7 @@ if image_path is not None:
      cols = st.columns(4) 
      for i in range(4):
          title='class  '+class_dict[i]
-         cols[i].header(np.round(prediction_class_VGG16[0][i],2))
-     K.clear_session()
+         cols[i].header(np.round(prediction_class_VGG16[0][i],2))v
 
    #  st.text(prediction_class_VGG16)
         
