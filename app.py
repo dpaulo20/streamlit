@@ -243,8 +243,9 @@ if image_path is not None:
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
   
      with graph1.as_default():
-  
+         K.clear_session()
          batch_pred_masks_UNET = model_UNET.predict(data_S)
+         K.clear_session()
         
      st.subheader("Prédiction modéle UNET - Resnet50")
 
@@ -253,14 +254,18 @@ if image_path is not None:
      st.subheader("Prédiction modéle FPN - Resnet50")
     
      with graph2.as_default():
+        K.clear_session()
         batch_pred_masks_FPN = model_FPN.predict(data_S)
+        K.clear_session()
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
      st.subheader("Classification avec VGG16 (probalilité)")
   
      with graph3.as_default():
+        K.clear_session()
         prediction_class_VGG16 = model_VGG16.predict(data_C)
+        K.clear_session()
     
      st.text(prediction_class_VGG16)
             
