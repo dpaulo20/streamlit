@@ -214,7 +214,7 @@ def load_output_image(img):
      image_array_C = np.asarray(image_C)/ 255.
      data_S[0] = image_array
      data_C[0] = image_array_C
-     return image,image_array,image_array_C
+     return image,data_S,data_C
     
 
 #########################################
@@ -238,7 +238,7 @@ st.text("télécharger une image de nuage au format .jpg")
 image_path = st.file_uploader("Choisir une image", type="jpg")
 
 if image_path is not None:
-     image,image_array,image_array_C=load_output_image(image_path)
+     image,data_S,data_C=load_output_image(image_path)
         
      st.image(image, caption='Uploaded cloud image.', use_column_width=True)
   
