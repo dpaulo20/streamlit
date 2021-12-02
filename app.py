@@ -20,7 +20,7 @@ from keras.layers import LSTM, Dense, RepeatVector,TimeDistributed, Input, Globa
 from keras.layers import Conv2D, MaxPooling2D, UpSampling2D, Flatten, Reshape, Dropout
 
 #K.clear_session()
-graph = tf.get_default_graph()
+graph1 = tf.get_default_graph()
 graph2 = tf.get_default_graph()
 graph3 = tf.get_default_graph()
 
