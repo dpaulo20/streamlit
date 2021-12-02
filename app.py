@@ -245,7 +245,7 @@ if image_path is not None:
      with graph1.as_default():
 
          batch_pred_masks_UNET = model_UNET.predict(data_S)
-     K.clear_session()
+
         
      st.subheader("Prédiction modéle UNET - Resnet50")
 
@@ -256,7 +256,7 @@ if image_path is not None:
      with graph2.as_default():
 
         batch_pred_masks_FPN = model_FPN.predict(data_S)
-     K.clear_session()
+
         
      visualize_image_mask_prediction(None,batch_pred_masks_FPN)
     
@@ -265,7 +265,7 @@ if image_path is not None:
      with graph3.as_default():
 
         prediction_class_VGG16 = model_VGG16.predict(data_C)
-     K.clear_session()
+
     
      st.text(prediction_class_VGG16)
             
@@ -274,6 +274,7 @@ if image_path is not None:
      for i in range(4):
          title='class  '+class_dict[i]
          cols[i].header(np.round(prediction_class_VGG16[0][i],2))
+     K.clear_session()
 
    #  st.text(prediction_class_VGG16)
         
