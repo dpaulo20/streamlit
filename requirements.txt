@@ -1,5 +1,6 @@
 numpy
 imgaug
+streamlit==1.1.0
 opencv-python-headless
 segmentation_models
 tensorflow==1.15.0
