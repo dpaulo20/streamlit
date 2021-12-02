@@ -165,7 +165,7 @@ def build_UNET_resnet50():
         st.error("erreur chargement H5")
 
 
-    model_UNET.load_weights('UNET-resnet50.h5')
+ #   model_UNET.load_weights('UNET-resnet50.h5')
     
     return model_UNET
 
@@ -227,6 +227,7 @@ def load_output_image(img):
 
 model_FPN=build_FPN_resnet50()
 model_UNET=build_UNET_resnet50()
+model_UNET.load_weights('UNET-resnet50.h5')
 model_VGG16=vgg16_classfication()
 
 
